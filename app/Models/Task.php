@@ -15,7 +15,7 @@ class Task extends BaseModel
     const NAME = "name";
     const DESCRIPTION = 'description';
 
-    protected $fillable = [self::USER_ID, self::BOARD_ID, self::NAME, self::DESCRIPTION];
+    protected $fillable = [self::USER_ID, self::BOARD_ID, self::NAME, self::DESCRIPTION, self::STATUS];
 
     const TASK_STATUS = [self::PENDING, self::WORKING, self::COMPLETED];
 

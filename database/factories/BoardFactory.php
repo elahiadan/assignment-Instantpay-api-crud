@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Board;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,8 @@ class BoardFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            Board::NAME => fake()->name(),
+            Board::USER_ID => User::all()->random()->id,
         ];
     }
 }

@@ -129,12 +129,7 @@ class TaskController extends BaseController
             }
 
             // update task details
-            $task->{Task::NAME} = $data['name'];
-            $task->{Task::DESCRIPTION} = $data['description'];
-            $task->{Task::BOARD_ID} = $data['board_id'];
-            $task->{Task::USER_ID} = Auth::id();
-            $task->{Task::STATUS} = $data['status'];
-            $task->save();
+            $task->update($data);
 
             // send response
             return $this->sendResponse($task, "task updated successfully");

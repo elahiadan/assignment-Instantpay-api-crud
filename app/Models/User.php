@@ -17,6 +17,7 @@ class User extends Authenticatable
     const EMAIL = "email";
     const PASSWORD = "password";
     const EMAIL_VERIFIED_AT = "email_verified_at";
+    const REMEMBER_TOKEN = "remember_token";
 
 
     protected $fillable = [self::NAME, self::EMAIL, self::PASSWORD];

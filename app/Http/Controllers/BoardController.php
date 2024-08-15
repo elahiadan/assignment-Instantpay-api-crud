@@ -116,9 +116,7 @@ class BoardController extends BaseController
             }
 
             // update board details
-            $board->{Board::NAME} = $data['name'];
-            $board->{Board::USER_ID} = Auth::id();
-            $board->save();
+            $board->update($data);
 
             //  send response
             return $this->sendResponse($board, "Board updated successfully");
