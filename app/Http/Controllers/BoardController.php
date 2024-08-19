@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\User;
 use App\Models\Board;
+use App\Events\UserEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -24,6 +25,9 @@ class BoardController extends BaseController
             if (empty($user)) {
                 return $this->sendError('Unauthenticated', 401);
             }
+
+            // userEvent event trigger
+            event(new UserEvent($user));
 
             // get boards details with login user and tasks
             $boards = Board::with(['user', 'tasks'])->where(Board::USER_ID, $userId)->get();
