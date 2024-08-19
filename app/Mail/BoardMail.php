@@ -9,18 +9,20 @@ use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-
-class UserMail extends Mailable
+class BoardMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-
-    public $userMail;
-    public $file = "2.png";
-    public function __construct($userMail)
+    /**
+     * Create a new message instance.
+     */
+    public $boardMail;
+    public $file = '2.png';
+    public function __construct($boardMail)
     {
-        $this->userMail = $userMail;
+        $this->boardMail = $boardMail;
     }
 
     /**
@@ -42,16 +44,15 @@ class UserMail extends Mailable
      */
     public function content(): Content
     {
-        Log::alert("USER MAIL",[ $this->userMail->userEvent]);
+        Log::alert("BOARD MAIL", [$this->boardMail]);
         // need to create a file in views/email/index.blade.php
         return new Content(
-            html: 'emails.index',
+            html: 'emails.board',
             // html: 'mail.orders.shipped', // use one of them view or html or markdown 
             // text: 'mail.orders.shipped-text',
             // only these fields are available in blade
             with: [
-                'name' => $this->userMail->userEvent->name,
-                'email' => $this->userMail->userEvent->email,
+                'name' => $this->boardMail->name,
                 "image" => public_path('images/' . $this->file),
             ],
         );

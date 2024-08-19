@@ -7,16 +7,16 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 
-class UserEvent
+class TaskEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     // Bind this event with listeners in EventServiceProvider
-    public $userEvent;
-    public function __construct($userEvent)
+    public $taskEvent;
+    public function __construct($taskEvent)
     {
-        Log::alert("USER EVENT", [$userEvent]);
-        // Receving Array or collection
-        $this->userEvent = $userEvent;
+        Log::alert("USER EVENT", [$taskEvent]);
+        // Receiving Array or collection
+        $this->taskEvent = $taskEvent;
     }
 }

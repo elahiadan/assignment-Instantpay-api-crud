@@ -12,7 +12,7 @@ class UserUpdateListener
     public function handle(UserEvent $userEvent): void
     {
         // Perform additional actions when user is updated
-        Log::info('User event Updated: ', ['User Name' => $userEvent->userEvent['name'], 'user_id' => $userEvent->userEvent->id]);
+        Log::alert("USER LISTENER", [$userEvent->userEvent]);
         // dispacting the UserJob
         dispatch(new UserJob($userEvent));
     }

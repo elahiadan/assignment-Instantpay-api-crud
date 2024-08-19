@@ -46,7 +46,7 @@ class BoardController extends BaseController
 
     public function store(Request $request)
     {
-        try {
+        // try {
             // get login user id
             $userId = Auth::id();
 
@@ -79,9 +79,9 @@ class BoardController extends BaseController
 
             //  send response
             return $this->sendResponse($board, "Board created successfully", 201);
-        } catch (\Throwable $error) {
-            return $this->sendError('something went wrong', 500, $error);
-        }
+        // } catch (\Throwable $error) {
+        //     return $this->sendError('something went wrong', 500, $error);
+        // }
     }
 
     public function update(Request $request, $boardId)

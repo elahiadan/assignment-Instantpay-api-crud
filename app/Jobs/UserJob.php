@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\Log;
 
 class UserJob implements ShouldQueue
 {
@@ -23,7 +24,9 @@ class UserJob implements ShouldQueue
 
     public function handle(): void
     {
+        Log::alert("USER JOB", [$this->userJob]);
         // I amusing queue to perform async task
-        Mail::queue((new UserMail($this->userJob))->delay(now()->addMinutes(1)));
+        // Mail::to('recevie_email@example.com')->queue(new UserMail($this->userJob))->delay(now()->addMinutes(1));
+        Mail::to('recevie_email@example.com')->queue(new UserMail($this->userJob));
     }
 }

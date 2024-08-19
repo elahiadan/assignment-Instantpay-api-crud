@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Laravel 11 Send Email with Attachment Example</title>
 </head>
+
 <body>
-    <h1>Hello world</h1>
+    <h1>{{ $name }}</h1>
+
+    <p>{{$email}} hello dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.</p>
+
+    <img src="{{ $message->embed($image) }}">
+    <p>Thank you</p>
 </body>
+
 </html>

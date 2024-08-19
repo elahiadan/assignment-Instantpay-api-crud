@@ -3,8 +3,12 @@
 namespace App\Models;
 
 use App\Models\BaseModel;
+use App\Observers\BoardObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+// I can use observer class to bind with usermodel like below or in AppServiceProvide
+#[ObservedBy([BoardObserver::class])]
 class Board extends BaseModel
 {
     use HasFactory;

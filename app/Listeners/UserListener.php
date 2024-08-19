@@ -11,6 +11,6 @@ class UserListener
     public function handle(UserEvent $userEvent): void
     {
         // Do something when the event is triggered
-        Log::info('User event triggered: ', ['User Name' => $userEvent->userEvent['name'], 'user_id' => $userEvent->userEvent->id]);
+        Log::alert("USER LISTENER", [$userEvent->userEvent]);
     }
 }

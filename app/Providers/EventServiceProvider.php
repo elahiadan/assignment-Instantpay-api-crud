@@ -2,13 +2,17 @@
 
 namespace App\Providers;
 
+use App\Events\TaskEvent;
 use App\Events\UserEvent;
+use App\Events\BoardEvent;
+use App\Listeners\TaskListener;
 use App\Listeners\UserListener;
+use App\Listeners\BoardListener;
 use App\Listeners\UserUpdateListener;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -26,6 +30,12 @@ class EventServiceProvider extends ServiceProvider
             UserListener::class,
             UserUpdateListener::class,
         ],
+        BoardEvent::class => [
+            BoardListener::class
+        ],
+        TaskEvent::class => [
+            TaskListener::class
+        ]
     ];
 
     /**
